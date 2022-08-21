@@ -1,12 +1,16 @@
 package br.com.fiap.apinotas.dto;
 
+import br.com.fiap.apinotas.entity.NotaEntity;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class NotaDTO {
     private Integer codigo;
     private String texto;
     private Boolean urgente;
+    private Date dataHoraCadastro;
 
     public NotaDTO () {}
 
@@ -20,5 +24,12 @@ public class NotaDTO {
     {
         this.texto = criarEditarNotaDTO.getTexto();
         this.urgente = criarEditarNotaDTO.getUrgente();
+    }
+
+    public NotaDTO (NotaEntity notaEntity){
+        this.codigo = notaEntity.getCodigo();
+        this.texto = notaEntity.getTexto();
+        this.urgente = notaEntity.getUrgente();
+        this.dataHoraCadastro = notaEntity.getDataHoraCadastro();
     }
 }
